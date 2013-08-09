@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfPlayground
+namespace WpfPlayground.Views
 {
     /// <summary>
-    /// Interaction logic for HomeView.xaml
+    /// Interaction logic for ShellView.xaml
     /// </summary>
-    public partial class HomeView : UserControl
+    public partial class ShellView : UserControl
     {
-        public HomeView()
+        public ShellView()
         {
             InitializeComponent();
         }

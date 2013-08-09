@@ -1,6 +1,6 @@
 ﻿using Caliburn.Micro;
 
-namespace WpfPlayground
+namespace WpfPlayground.ViewModels
 {
     public class HomeViewModel : PropertyChangedBase
     {
