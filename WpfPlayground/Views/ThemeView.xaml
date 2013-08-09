@@ -12,40 +12,43 @@
         <viewModels:ThemeViewModel x:Key="DesignViewModel" />
     </UserControl.Resources>
 
-    <Grid d:DataContext="{Binding Source={StaticResource DesignViewModel}}">
-        <Grid.Resources>
+    <WrapPanel d:DataContext="{Binding Source={StaticResource DesignViewModel}}">
+        <WrapPanel.Resources>
             <SolidColorBrush x:Key="RandomBrush"
                              Color="{Binding RandomColour}" />
-        </Grid.Resources>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+        </WrapPanel.Resources>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <TextBlock x:Name="DisplayName" />
-
-        <StackPanel Grid.Column="0"
-                    Grid.Row="1"
-                    Orientation="Vertical">
+        <StackPanel Style="{StaticResource WrapStackPanel}">
+            <TextBlock Text="Random Brush" />
             <Rectangle Fill="{DynamicResource RandomBrush}"
                        Width="100"
                        Height="20" />
-            <Rectangle Fill="{x:Static SystemColors.DesktopBrush}"                       
-                       Width="100"
-                       Height="20" />
-        </StackPanel>
-        <StackPanel Grid.Column="1"
-                    Grid.Row="1"
-                    Orientation="Vertical">
             <Button x:Name="RandomiseColourButton">
                 Randomise
             </Button>
-            <TextBlock Text="Desktop Brush" />
         </StackPanel>
-    </Grid>
+
+        <StackPanel Style="{StaticResource WrapStackPanel}">
+            <TextBlock Text="Desktop Brush" />
+            <Rectangle Fill="{x:Static SystemColors.DesktopBrush}"
+                       Width="100"
+                       Height="20" />
+        </StackPanel>
+
+        <StackPanel Style="{StaticResource WrapStackPanel}">
+            <TextBlock Text="Explicit Style"
+                       Style="{StaticResource ExplicitTextBlockStyle}" />
+        </StackPanel>
+        <StackPanel Style="{StaticResource WrapStackPanel}">
+            <StackPanel.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontWeight"
+                            Value="Light" />
+                    <Setter Property="HorizontalAlignment"
+                            Value="Center" />
+                </Style>
+            </StackPanel.Resources>
+            <TextBlock Text="Implicit Style" />
+        </StackPanel>
+    </WrapPanel>
 </UserControl>

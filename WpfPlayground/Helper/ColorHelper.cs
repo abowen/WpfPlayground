@@ -4,6 +4,7 @@ using System.Windows.Media;
 
 namespace WpfPlayground.Helper
 {
+    // TODO: Move to extension
     public class ColorHelper
     {
         /// <summary>

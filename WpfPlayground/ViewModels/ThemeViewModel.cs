@@ -16,13 +16,7 @@ namespace WpfPlayground.ViewModels
         }
         
         private readonly Random _random;
-        private readonly List<KeyValuePair<string, Color>> _knownColors;
-                
-        public new string DisplayName
-        {
-            get { return "Themes"; }
-            set { throw new NotImplementedException(); }
-        }
+        private readonly List<KeyValuePair<string, Color>> _knownColors;               
 
         private Color _randomColour;
 

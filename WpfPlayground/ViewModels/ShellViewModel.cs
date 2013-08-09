@@ -13,5 +13,10 @@ namespace WpfPlayground.ViewModels
         {
             ActivateItem(new ThemeViewModel());
         }
+
+        public void ShowAsyncButton()
+        {
+            ActivateItem(new AsyncViewModel());
+        }
     }
 }
