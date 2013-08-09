@@ -35,6 +35,9 @@
             <Rectangle Fill="{DynamicResource RandomBrush}"
                        Width="100"
                        Height="20" />
+            <Rectangle Fill="{x:Static SystemColors.DesktopBrush}"                       
+                       Width="100"
+                       Height="20" />
         </StackPanel>
         <StackPanel Grid.Column="1"
                     Grid.Row="1"
@@ -42,6 +45,7 @@
             <Button x:Name="RandomiseColourButton">
                 Randomise
             </Button>
+            <TextBlock Text="Desktop Brush" />
         </StackPanel>
     </Grid>
 </UserControl>

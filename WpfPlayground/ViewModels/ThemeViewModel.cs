@@ -11,28 +11,17 @@ namespace WpfPlayground.ViewModels
         public ThemeViewModel()
         {
             _random = new Random();
-            _knownColors = ColorHelper.GetKnownColors();
+            _knownColors = ColorHelper.GetKnownColors();            
             RandomiseColor();
         }
-
-        public new string DisplayName
-        {
-            get { return "Themes"; } set { throw new NotImplementedException(); }
-        }
-
+        
         private readonly Random _random;
         private readonly List<KeyValuePair<string, Color>> _knownColors;
-        
-
-        public void RandomiseColourButton()
+                
+        public new string DisplayName
         {
-            RandomiseColor();
-        }
-
-        void RandomiseColor()
-        {
-            var index = _random.Next(_knownColors.Count);
-            RandomColour = _knownColors[index].Value;
+            get { return "Themes"; }
+            set { throw new NotImplementedException(); }
         }
 
         private Color _randomColour;
@@ -45,6 +34,17 @@ namespace WpfPlayground.ViewModels
                 _randomColour = value;
                 NotifyOfPropertyChange(() => RandomColour);
             }
-        }                
+        }
+
+        public void RandomiseColourButton()
+        {
+            RandomiseColor();
+        }
+
+        void RandomiseColor()
+        {
+            var index = _random.Next(_knownColors.Count);
+            RandomColour = _knownColors[index].Value;
+        }
     }
 }
