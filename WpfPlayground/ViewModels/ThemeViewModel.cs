@@ -30,10 +30,5 @@ namespace WpfPlayground.ViewModels
         {
             RandomColour = ColorHelper.GetRandomColor();
         }
-
-        public void BubblingEventStackPanelMouseDown()
-        {
-            
-        }
     }
 }

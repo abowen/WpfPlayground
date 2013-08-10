@@ -4,6 +4,14 @@ namespace WpfPlayground.ViewModels
 {
     public class ShellViewModel : Conductor<object>
     {
+        private readonly IEventAggregator _eventAggregator;
+
+        public ShellViewModel()
+        {
+            _eventAggregator = IoC.Get<EventAggregator>();            
+            NotificationViewModel = new NotificationViewModel(_eventAggregator);
+        }
+
         public void ShowHomeButton()
         {
             ActivateItem(new HomeViewModel());
@@ -23,5 +31,14 @@ namespace WpfPlayground.ViewModels
         {
             ActivateItem(new AnimationViewModel());
         }
+
+        public void ShowEventAggregatorButton()
+        {
+            // TODO: Use dependency injection instead of resolving
+            var eventAggregatorViewModel = new EventAggregatorViewModel(_eventAggregator);            
+            ActivateItem(eventAggregatorViewModel);
+        }
+
+        public NotificationViewModel NotificationViewModel { get; private set; }
     }
 }

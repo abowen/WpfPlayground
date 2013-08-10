@@ -6,7 +6,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
-                    <wpfPlayground:ShellBootstrapper x:Key="ShellBootstrapper" />                                     
+                    <wpfPlayground:ShellBootstrapper x:Key="ShellBootstrapper" />                         
                 </ResourceDictionary>
                 <ResourceDictionary Source="Styles/StackPanelStyle.xaml" />
                 <ResourceDictionary Source="Styles/TextBlockStyle.xaml" />

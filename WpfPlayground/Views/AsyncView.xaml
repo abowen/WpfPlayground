@@ -6,10 +6,7 @@
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="300">
-    <WrapPanel>
-        <WrapPanel.Resources>
-
-        </WrapPanel.Resources>
+    <WrapPanel>        
         <StackPanel Style="{StaticResource WrapStackPanel}">
             <TextBlock Text="Async"
                        Style="{StaticResource HeadingStyle}" />
