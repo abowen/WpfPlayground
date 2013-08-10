@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModels="clr-namespace:WpfPlayground.ViewModels"
              mc:Ignorable="d"
-             d:DesignHeight="300"
-             d:DesignWidth="300">
+             d:DesignHeight="400"
+             d:DesignWidth="400">
 
     <UserControl.Resources>
         <viewModels:ThemeViewModel x:Key="DesignViewModel" />
@@ -19,7 +19,8 @@
         </WrapPanel.Resources>
 
         <StackPanel Style="{StaticResource WrapStackPanel}">
-            <TextBlock Text="Random Brush" />
+            <TextBlock Text="Random Brush"
+                       Style="{StaticResource HeadingStyle}" />
             <Rectangle Fill="{DynamicResource RandomBrush}"
                        Width="100"
                        Height="20" />
@@ -29,7 +30,8 @@
         </StackPanel>
 
         <StackPanel Style="{StaticResource WrapStackPanel}">
-            <TextBlock Text="Desktop Brush" />
+            <TextBlock Text="Desktop Brush"
+                       Style="{StaticResource HeadingStyle}" />
             <Rectangle Fill="{x:Static SystemColors.DesktopBrush}"
                        Width="100"
                        Height="20" />
@@ -50,5 +52,15 @@
             </StackPanel.Resources>
             <TextBlock Text="Implicit Style" />
         </StackPanel>
+
+        <StackPanel Style="{StaticResource WrapStackPanel}">
+            <TextBlock Style="{StaticResource HeadingStyle}"
+                       xml:space="preserve">  
+          Preserve  
+ Text
+   Formatting
+            </TextBlock>
+        </StackPanel>
+
     </WrapPanel>
 </UserControl>

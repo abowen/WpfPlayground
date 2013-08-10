@@ -11,7 +11,8 @@
 
         </WrapPanel.Resources>
         <StackPanel Style="{StaticResource WrapStackPanel}">
-            <TextBlock Text="Async" />
+            <TextBlock Text="Async"
+                       Style="{StaticResource HeadingStyle}" />
             <Button x:Name="LongProcessButton"
                     Content="Start Long Process" />
             <ProgressBar x:Name="LongProcessProgressBar"

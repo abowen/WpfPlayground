@@ -42,6 +42,5 @@ namespace WpfPlayground.ViewModels
                 LongProcessProgressBarProcess += 0.5m;
             }
         }
-
     }
 }

@@ -37,6 +37,8 @@
                     Content="Themes" />
             <Button x:Name="ShowAsyncButton"
                     Content="Async" />
+            <Button x:Name="ShowAnimationButton"
+                    Content="Animation" />
         </StackPanel>
 
 

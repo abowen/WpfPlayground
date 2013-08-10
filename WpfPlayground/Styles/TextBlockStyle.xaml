@@ -2,7 +2,21 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Key="ExplicitTextBlockStyle"
            TargetType="TextBlock">
-        <Setter Property="FontWeight" Value="SemiBold" />
-        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontWeight"
+                Value="SemiBold" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+    </Style>
+
+    <Style x:Key="HeadingStyle"
+           TargetType="TextBlock">
+        <Setter Property="FontSize"
+                Value="14"></Setter>
+        <Setter Property="FontWeight"
+                Value="SemiBold" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
     </Style>
 </ResourceDictionary>

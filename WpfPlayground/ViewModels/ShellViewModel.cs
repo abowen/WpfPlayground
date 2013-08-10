@@ -18,5 +18,10 @@ namespace WpfPlayground.ViewModels
         {
             ActivateItem(new AsyncViewModel());
         }
+
+        public void ShowAnimationButton()
+        {
+            ActivateItem(new AnimationViewModel());
+        }
     }
 }

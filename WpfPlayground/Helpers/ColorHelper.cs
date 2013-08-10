@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Media;
 
-namespace WpfPlayground.Helper
-{
-    // TODO: Move to extension
-    public class ColorHelper
+namespace WpfPlayground.Helpers
+{    
+    public static class ColorHelper
     {
         /// <summary>
         /// Returns a list containing all known colors, each as a KeyValuePair with the name
@@ -21,6 +21,24 @@ namespace WpfPlayground.Helper
             foreach (var propertyInfo in propertyInfos)
                 result.Add(new KeyValuePair<string, Color>(propertyInfo.Name, (Color)propertyInfo.GetValue(null, null)));
             return result;
+        }
+
+        private static Random _random;
+        private static List<KeyValuePair<string, Color>> _knownColors;
+
+        public static Color GetRandomColor()
+        {
+            if (_random == null)
+            {
+                _random = new Random();
+            }
+            if (_knownColors == null)
+            {
+                _knownColors = GetKnownColors();
+            }
+
+            var index = _random.Next(_knownColors.Count);
+            return _knownColors[index].Value;
         }
     }
 }

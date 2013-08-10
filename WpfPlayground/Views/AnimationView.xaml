@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="WpfPlayground.Views.AnimationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+    <WrapPanel>
+        <StackPanel Style="{StaticResource WrapStackPanel}"
+                    Background="RoyalBlue">
+            <StackPanel.Triggers>
+                <EventTrigger RoutedEvent="StackPanel.MouseDown">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard TargetProperty="Height">
+                                <DoubleAnimation From="100"
+                                                 To="30"
+                                                 Duration="0:0:1"
+                                                 RepeatBehavior="2x"
+                                                 AutoReverse="True">                                    
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </StackPanel.Triggers>
+
+
+            <TextBlock Style="{StaticResource HeadingStyle}"
+                       Text="XAML" />
+            <TextBlock Style="{StaticResource HeadingStyle}"
+                       Text="Storyboard" />
+            <TextBlock Style="{StaticResource HeadingStyle}"
+                       Text="With" />
+            <TextBlock Style="{StaticResource HeadingStyle}"
+                       Text="Click" />
+        </StackPanel>
+
+        <StackPanel x:Name="CodeBehindStackPanel"
+                    Style="{StaticResource WrapStackPanel}"
+                    Background="BlueViolet"
+                    MouseDown="CodeBehindStackPanel_OnMouseDown">
+            <TextBlock Style="{StaticResource HeadingStyle}"
+                       Text="Code Behind" />
+            <TextBlock Style="{StaticResource HeadingStyle}"
+                       Text="Storyboard" />
+            <TextBlock Style="{StaticResource HeadingStyle}"
+                       Text="With" />
+            <TextBlock Style="{StaticResource HeadingStyle}"
+                       Text="Click" />
+        </StackPanel>
+
+
+        <StackPanel Style="{StaticResource WrapStackPanel}">
+            <TextBlock Text="Line Rotation"
+                       Style="{StaticResource HeadingStyle}" />
+            <Line x:Name="RotationLine"
+                  X1="30"
+                  Y1="30"
+                  X2="30"
+                  Y2="0"
+                  Stroke="Black"
+                  StrokeThickness="5"
+                  Height="60"
+                  Width="60" />
+        </StackPanel>
+    </WrapPanel>
+</UserControl>

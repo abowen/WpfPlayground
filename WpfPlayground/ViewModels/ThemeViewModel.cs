@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Caliburn.Micro;
 using System.Windows.Media;
-using Caliburn.Micro;
-using WpfPlayground.Helper;
+using WpfPlayground.Helpers;
 
 namespace WpfPlayground.ViewModels
 {
@@ -10,14 +8,9 @@ namespace WpfPlayground.ViewModels
     {
         public ThemeViewModel()
         {
-            _random = new Random();
-            _knownColors = ColorHelper.GetKnownColors();            
-            RandomiseColor();
+            RandomiseColourButton();
         }
-        
-        private readonly Random _random;
-        private readonly List<KeyValuePair<string, Color>> _knownColors;               
-
+           
         private Color _randomColour;
 
         public Color RandomColour
@@ -32,13 +25,7 @@ namespace WpfPlayground.ViewModels
 
         public void RandomiseColourButton()
         {
-            RandomiseColor();
-        }
-
-        void RandomiseColor()
-        {
-            var index = _random.Next(_knownColors.Count);
-            RandomColour = _knownColors[index].Value;
+            RandomColour = ColorHelper.GetRandomColor();
         }
     }
 }
