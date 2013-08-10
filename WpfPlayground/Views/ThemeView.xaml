@@ -62,5 +62,13 @@
             </TextBlock>
         </StackPanel>
 
+        <StackPanel Style="{StaticResource WrapStackPanel}" Background="PaleVioletRed">
+            <TextBlock Style="{StaticResource HeadingStyle}" Text="String Format" />
+            <TextBlock Text="{Binding RandomDecimal, StringFormat='Raw {0,10}'}" />
+            <TextBlock Text="{Binding RandomDecimal, StringFormat='Currency {0,10:C2}'}" />
+            <TextBlock Text="{Binding RandomDecimal, StringFormat='Currency {0,10:C2}'}" />
+
+        </StackPanel>
+
     </WrapPanel>
 </UserControl>

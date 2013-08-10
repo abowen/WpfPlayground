@@ -18,17 +18,13 @@
                                                  To="30"
                                                  Duration="0:0:1"
                                                  RepeatBehavior="2x"
-                                                 AutoReverse="True">                                    
+                                                 AutoReverse="True">
                                 </DoubleAnimation>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger.Actions>
                 </EventTrigger>
             </StackPanel.Triggers>
-
-
-            <TextBlock Style="{StaticResource HeadingStyle}"
-                       Text="XAML" />
             <TextBlock Style="{StaticResource HeadingStyle}"
                        Text="Storyboard" />
             <TextBlock Style="{StaticResource HeadingStyle}"
@@ -44,26 +40,50 @@
             <TextBlock Style="{StaticResource HeadingStyle}"
                        Text="Code Behind" />
             <TextBlock Style="{StaticResource HeadingStyle}"
-                       Text="Storyboard" />
-            <TextBlock Style="{StaticResource HeadingStyle}"
                        Text="With" />
             <TextBlock Style="{StaticResource HeadingStyle}"
                        Text="Click" />
         </StackPanel>
 
 
-        <StackPanel Style="{StaticResource WrapStackPanel}">
-            <TextBlock Text="Line Rotation"
+        <StackPanel Style="{StaticResource WrapStackPanel}"
+                    Background="MediumSeaGreen">
+            <StackPanel.Triggers>
+                <EventTrigger RoutedEvent="StackPanel.MouseDown">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="AngleRotateTransform"
+                                             Storyboard.TargetProperty="Angle"
+                                             From="0"
+                                             To="360"
+                                             Duration="0:1:0">
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </StackPanel.Triggers>
+
+            <TextBlock Text="Angle Rotation"
                        Style="{StaticResource HeadingStyle}" />
-            <Line x:Name="RotationLine"
-                  X1="30"
-                  Y1="30"
-                  X2="30"
+            <Line Name="RotationLine"
+                  X1="25"
+                  Y1="25"
+                  X2="25"
                   Y2="0"
                   Stroke="Black"
-                  StrokeThickness="5"
+                  StrokeThickness="3"
                   Height="60"
-                  Width="60" />
+                  Width="60"
+                  RenderTransformOrigin="0.5,0.5">
+                <Line.RenderTransform>
+                    <RotateTransform x:Name="AngleRotateTransform"
+                                     Angle="0" />
+                </Line.RenderTransform>
+            </Line>
+
+            <TextBlock Text="{Binding ElementName=AngleRotateTransform, Path=Angle, StringFormat='0&#186;'}"
+                       Margin="0,0,5,5"
+                       HorizontalAlignment="Right" />
         </StackPanel>
     </WrapPanel>
 </UserControl>
