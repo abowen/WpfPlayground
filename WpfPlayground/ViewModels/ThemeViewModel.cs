@@ -9,7 +9,7 @@ namespace WpfPlayground.ViewModels
         public ThemeViewModel()
         {
             RandomiseColourButton();
-            RandomDecimal = 321.456m;
+            RandomDecimal = 12.3m;
         }
            
         private Color _randomColour;
@@ -29,6 +29,11 @@ namespace WpfPlayground.ViewModels
         public void RandomiseColourButton()
         {
             RandomColour = ColorHelper.GetRandomColor();
+        }
+
+        public void BubblingEventStackPanelMouseDown()
+        {
+            
         }
     }
 }

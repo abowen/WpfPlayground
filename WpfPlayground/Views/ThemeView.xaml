@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:viewModels="clr-namespace:WpfPlayground.ViewModels"
+             xmlns:viewModels="clr-namespace:WpfPlayground.ViewModels"             
              mc:Ignorable="d"
              d:DesignHeight="400"
              d:DesignWidth="400">
@@ -18,18 +18,17 @@
                              Color="{Binding RandomColour}" />
         </WrapPanel.Resources>
 
-        <StackPanel Style="{StaticResource WrapStackPanel}">
+        <StackPanel Style="{StaticResource WrapStackPanel}"
+                    Background="{DynamicResource RandomBrush}">
             <TextBlock Text="Random Brush"
                        Style="{StaticResource HeadingStyle}" />
-            <Rectangle Fill="{DynamicResource RandomBrush}"
-                       Width="100"
-                       Height="20" />
             <Button x:Name="RandomiseColourButton">
                 Randomise
             </Button>
         </StackPanel>
 
-        <StackPanel Style="{StaticResource WrapStackPanel}">
+        <StackPanel Style="{StaticResource WrapStackPanel}"
+                    Background="{x:Static SystemColors.ActiveBorderBrush}">
             <TextBlock Text="Desktop Brush"
                        Style="{StaticResource HeadingStyle}" />
             <Rectangle Fill="{x:Static SystemColors.DesktopBrush}"
@@ -53,7 +52,8 @@
             <TextBlock Text="Implicit Style" />
         </StackPanel>
 
-        <StackPanel Style="{StaticResource WrapStackPanel}">
+        <StackPanel Style="{StaticResource WrapStackPanel}"
+                    Background="LightSeaGreen">
             <TextBlock Style="{StaticResource HeadingStyle}"
                        xml:space="preserve">  
           Preserve  
@@ -62,13 +62,16 @@
             </TextBlock>
         </StackPanel>
 
-        <StackPanel Style="{StaticResource WrapStackPanel}" Background="PaleVioletRed">
-            <TextBlock Style="{StaticResource HeadingStyle}" Text="String Format" />
-            <TextBlock Text="{Binding RandomDecimal, StringFormat='Raw {0,10}'}" />
-            <TextBlock Text="{Binding RandomDecimal, StringFormat='Currency {0,10:C2}'}" />
-            <TextBlock Text="{Binding RandomDecimal, StringFormat='Currency {0,10:C2}'}" />
-
+        <StackPanel Style="{StaticResource WrapStackPanel}"
+                    Background="PaleVioletRed">
+            <TextBlock Style="{StaticResource HeadingStyle}"
+                       Text="String Format" />
+            <TextBlock Text="{Binding RandomDecimal, StringFormat='Raw {0}'}" />
+            <TextBlock Text="{Binding RandomDecimal, StringFormat='Currency {0:C2}'}" />
+            <TextBlock Text="{Binding RandomDecimal, StringFormat='Percent {0:P0}'}" />
+            <TextBlock Text="{Binding RandomDecimal, StringFormat='Custom {0:###.00}'}" />
+            <TextBlock Text="{Binding RandomDecimal, StringFormat='Padding {0,10}'}" />
         </StackPanel>
-
+        
     </WrapPanel>
 </UserControl>
