@@ -1,8 +1,8 @@
 ﻿namespace WpfPlayground.Common
 {
-    public class SpecialEvent
+    public class NotificationEvent
     {
-        public SpecialEvent(string heading, string message, EventLevel eventLevel)
+        public NotificationEvent(string heading, string message, EventLevel eventLevel)
         {
             Heading = heading;
             Message = message;

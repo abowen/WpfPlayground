@@ -1,18 +1,20 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Media;
 using Caliburn.Micro;
 using WpfPlayground.Common;
 
 namespace WpfPlayground.ViewModels
 {
-    public class NotificationViewModel : PropertyChangedBase, IHandle<SpecialEvent>
+    public class NotificationViewModel : PropertyChangedBase, IHandle<NotificationEvent>
     {
         private readonly IEventAggregator _eventAggregator;
 
         public NotificationViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
-            _eventAggregator.Subscribe(this);            
+            _eventAggregator.Subscribe(this);
         }
 
         // Design purposes only
@@ -59,8 +61,21 @@ namespace WpfPlayground.ViewModels
             }
         }
 
+        private bool _isVisible;
 
-        public void Handle(SpecialEvent message)
+        public bool IsVisible
+        {
+            get { return _isVisible; }
+            set
+            {
+                _isVisible = value;
+                NotifyOfPropertyChange(() => IsVisible);
+            }
+        }
+
+
+
+        public void Handle(NotificationEvent message)
         {
             Header = message.Heading;
             Message = message.Message;
@@ -78,10 +93,19 @@ namespace WpfPlayground.ViewModels
                     break;
                 case EventLevel.Trivial:
                     HeaderBrush = new SolidColorBrush(Colors.MediumSpringGreen);
-                    break;         
+                    break;
                 default:
                     throw new Exception("Unknown Event Level Raised");
             }
+
+            ShowNotification();
+        }
+
+        async private void  ShowNotification()
+        {
+            IsVisible = true;
+            await Task.Run(() => Thread.Sleep(3000));
+            IsVisible = false;
         }
     }
 }
