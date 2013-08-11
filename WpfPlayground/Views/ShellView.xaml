@@ -35,6 +35,14 @@
                     Content="Home" />
             <Button x:Name="ShowThemeButton"
                     Content="Themes" />
+            <Button x:Name="ShowDataTemplateButton">
+                <StackPanel>
+                    <TextBlock Text="Data"
+                               HorizontalAlignment="Center" />
+                    <TextBlock Text="Template"
+                               HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
             <Button x:Name="ShowAsyncButton"
                     Content="Async" />
             <Button x:Name="ShowAnimationButton"
@@ -57,7 +65,7 @@
 
             <ContentControl x:Name="NotificationViewModel"
                             HorizontalAlignment="Right"
-                            VerticalAlignment="Bottom"                            
+                            VerticalAlignment="Bottom"
                             d:DesignWidth="150"
                             d:DesignHeight="100"
                             Margin="5" />

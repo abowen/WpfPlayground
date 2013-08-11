@@ -6,10 +6,11 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
-                    <wpfPlayground:ShellBootstrapper x:Key="ShellBootstrapper" />                         
+                    <wpfPlayground:AppBootstrapper x:Key="AppBootstrapper" />                         
                 </ResourceDictionary>
                 <ResourceDictionary Source="Styles/StackPanelStyle.xaml" />
                 <ResourceDictionary Source="Styles/TextBlockStyle.xaml" />
+                <ResourceDictionary Source="DataTemplates/PersonDataTemplate.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>    

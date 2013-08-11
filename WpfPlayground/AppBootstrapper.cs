@@ -3,7 +3,7 @@ using WpfPlayground.ViewModels;
 
 namespace WpfPlayground
 {
-    public class ShellBootstrapper : Bootstrapper<ShellViewModel>
+    public class AppBootstrapper : Bootstrapper<ShellViewModel>
     {
         private readonly SimpleContainer _container = new SimpleContainer();
 
