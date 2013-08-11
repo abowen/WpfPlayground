@@ -17,9 +17,9 @@ namespace WpfPlayground.ViewModels
             ActivateItem(new HomeViewModel());
         }
 
-        public void ShowThemeButton()
+        public void ShowBindingButton()
         {
-            ActivateItem(new ThemeViewModel());
+            ActivateItem(new BindingViewModel());
         }
 
         public void ShowAsyncButton()

@@ -3,11 +3,11 @@
 namespace WpfPlayground.Views
 {
     /// <summary>
-    /// Interaction logic for ThemeView.xaml
+    /// Interaction logic for BindingView.xaml
     /// </summary>
-    public partial class ThemeView : UserControl
+    public partial class BindingView : UserControl
     {
-        public ThemeView()
+        public BindingView()
         {
             InitializeComponent();
         }

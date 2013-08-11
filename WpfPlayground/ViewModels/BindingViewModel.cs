@@ -4,9 +4,9 @@ using WpfPlayground.Helpers;
 
 namespace WpfPlayground.ViewModels
 {
-    public class ThemeViewModel : Screen
+    public class BindingViewModel : Screen
     {
-        public ThemeViewModel()
+        public BindingViewModel()
         {
             RandomiseColourButton();
             RandomDecimal = 12.3m;

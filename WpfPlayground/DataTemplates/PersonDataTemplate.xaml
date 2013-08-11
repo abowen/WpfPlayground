@@ -7,8 +7,7 @@
         <Border Margin="5"
                 CornerRadius="5"
                 Padding="5"
-                Background="DarkGray"
-                >
+                Background="DarkGray">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />

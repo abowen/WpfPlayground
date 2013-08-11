@@ -6,15 +6,19 @@
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="300">
-    <WrapPanel>        
-        <StackPanel Style="{StaticResource WrapStackPanel}">
+    <WrapPanel>
+        <StackPanel Style="{StaticResource WrapStackPanel}"
+                    Background="Gold">
             <TextBlock Text="Async"
                        Style="{StaticResource HeadingStyle}" />
             <Button x:Name="LongProcessButton"
                     Content="Start Long Process" />
             <ProgressBar x:Name="LongProcessProgressBar"
-                         Height="20"
+                         Background="Black"
+                         Foreground="Peru"
+                         Height="50"
                          Minimum="0"
+                         Margin="5"
                          Maximum="100"
                          Value="{Binding LongProcessProgressBarProcess}" />
         </StackPanel>
