@@ -11,16 +11,27 @@
                     Background="Gold">
             <TextBlock Text="Async"
                        Style="{StaticResource HeadingStyle}" />
-            <Button x:Name="LongProcessButton"
-                    Content="Start Long Process" />
-            <ProgressBar x:Name="LongProcessProgressBar"
+            <Button x:Name="AsyncButton"
+                    Content="Start Async" />
+            <ProgressBar x:Name="AsyncProgressBar"
                          Background="Black"
                          Foreground="Peru"
                          Height="50"
                          Minimum="0"
                          Margin="5"
                          Maximum="100"
-                         Value="{Binding LongProcessProgressBarProcess}" />
+                         Value="{Binding AsyncProgressBarProcess}" />
+        </StackPanel>
+        <StackPanel Style="{StaticResource WrapStackPanel}"
+                    Background="Gold">
+            <TextBlock Text="Task"
+                       Style="{StaticResource HeadingStyle}" />
+            <Button x:Name="TaskButton"
+                    Content="Start Task" />
+            <TextBlock x:Name="SquareRootNumber"
+                       Style="{StaticResource HeadingStyle}" />
+            <TextBlock x:Name="SquareRootCount"
+                       Style="{StaticResource HeadingStyle}" />
         </StackPanel>
     </WrapPanel>
 </UserControl>
