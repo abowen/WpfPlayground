@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
 using Caliburn.Micro;
@@ -8,6 +9,8 @@ namespace WpfPlayground.ViewModels
 {
     public class AsyncViewModel : PropertyChangedBase
     {
+
+
         private decimal _asyncProgressBarProcess;
 
         public decimal AsyncProgressBarProcess
@@ -22,12 +25,12 @@ namespace WpfPlayground.ViewModels
 
         public void AsyncButton()
         {
-            StartAsync();            
+            StartAsync();
         }
 
         private async void StartAsync()
         {
-            await Task.Run(() => AsyncProcess());            
+            await Task.Run(() => AsyncProcess());
         }
 
         private void AsyncProcess()
@@ -54,7 +57,7 @@ namespace WpfPlayground.ViewModels
                 for (int i = 1; i <= 10000; i++)
                 {
                     var root = Math.Sqrt(i);
-                    var equalizer = (root%1);
+                    var equalizer = (root % 1);
                     if (equalizer == 0)
                     {
                         results.Add(root);
@@ -65,12 +68,12 @@ namespace WpfPlayground.ViewModels
                 return results;
             });
 
-            taskSquareRoot.ContinueWith(task =>                     
+            taskSquareRoot.ContinueWith(task =>
             {
                 SquareRootCount = task.Result.Count;
-            });   
-         
-                        
+            });
+
+
         }
 
         private double _squareRootNumber;
@@ -92,6 +95,89 @@ namespace WpfPlayground.ViewModels
             {
                 _squareRootCount = value;
                 NotifyOfPropertyChange(() => SquareRootCount);
+            }
+        }
+
+
+        public void ThreadButton()
+        {
+            var thread = new System.Threading.Thread(new ThreadStart(ThreadWork));
+            thread.IsBackground = true;
+            thread.Start();
+        }
+
+        private void ThreadWork()
+        {
+            Thread.Sleep(2000);
+            ThreadValue = Thread.CurrentThread.GetHashCode();
+        }
+
+        private int _threadValue;
+        public int ThreadValue
+        {
+            get { return _threadValue; }
+            set
+            {
+                _threadValue = value;
+                NotifyOfPropertyChange(() => ThreadValue);
+            }
+        }
+
+        private BackgroundWorker backgroundWorker;
+
+        public void BackgroundWorkerStartButton()
+        {
+            // Typically this would be done in a constructor but I want to keep it more control like
+            if (backgroundWorker == null)
+            {
+                InitializeBackgroundWorker();
+            }
+            backgroundWorker.RunWorkerAsync();
+        }
+
+        private void InitializeBackgroundWorker()
+        {
+            backgroundWorker = new BackgroundWorker();
+            backgroundWorker.WorkerSupportsCancellation = true;
+            backgroundWorker.WorkerReportsProgress = true;
+            backgroundWorker.DoWork += BackgroundWorkerOnDoWork;
+            backgroundWorker.ProgressChanged += (sender, args) =>
+            {
+                BackgroundWorkerValue = args.ProgressPercentage;
+            };
+        }
+
+        private void BackgroundWorkerOnDoWork(object sender, DoWorkEventArgs doWorkEventArgs)
+        {
+            var worker = sender as BackgroundWorker;
+            for (int i = 1; i <= 100; i++)
+            {
+                if (worker.CancellationPending)
+                {
+                    doWorkEventArgs.Cancel = true;
+                    break;
+                }
+                Thread.Sleep(500);
+                worker.ReportProgress(i);
+            }            
+        }
+
+        public void BackgroundWorkerCancelButton()
+        {
+            if (backgroundWorker.WorkerSupportsCancellation)
+            {
+                backgroundWorker.CancelAsync();
+            }
+        }
+
+        private int _backgroundWorkerValue;
+        public int BackgroundWorkerValue
+        {
+            get { return _backgroundWorkerValue; }
+            set
+            {
+                _backgroundWorkerValue = value;
+                NotifyOfPropertyChange(() => BackgroundWorkerValue);
             }
         }
 

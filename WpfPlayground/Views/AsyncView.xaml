@@ -8,7 +8,7 @@
              d:DesignWidth="300">
     <WrapPanel>
         <StackPanel Style="{StaticResource WrapStackPanel}"
-                    Background="Gold">
+                    Background="OrangeRed">
             <TextBlock Text="Async"
                        Style="{StaticResource HeadingStyle}" />
             <Button x:Name="AsyncButton"
@@ -32,6 +32,31 @@
                        Style="{StaticResource HeadingStyle}" />
             <TextBlock x:Name="SquareRootCount"
                        Style="{StaticResource HeadingStyle}" />
+        </StackPanel>
+        <StackPanel Style="{StaticResource WrapStackPanel}"
+                    Background="PaleVioletRed">
+            <TextBlock Text="Thread"
+                       Style="{StaticResource HeadingStyle}" />
+            <Button x:Name="ThreadButton"
+                    Content="Start Thread" />
+            <TextBlock Text="Thread Hashcode"
+                       Style="{StaticResource HeadingStyle}" 
+                       FontWeight="Normal"/>
+            <TextBlock x:Name="ThreadValue"
+                       Style="{StaticResource HeadingStyle}" />
+        </StackPanel>
+
+        <StackPanel Style="{StaticResource WrapStackPanel}"
+                    Background="MediumPurple">
+            <TextBlock Text="Background Worker"
+                       Style="{StaticResource HeadingStyle}" />
+            <Button x:Name="BackgroundWorkerStartButton"
+                    Content="Start Worker" />
+            <Button x:Name="BackgroundWorkerCancelButton"
+                    Content="Cancel Worker" />
+            <TextBlock x:Name="BackgroundWorkerValue"
+                       Style="{StaticResource HeadingStyle}" />
+            
         </StackPanel>
     </WrapPanel>
 </UserControl>
