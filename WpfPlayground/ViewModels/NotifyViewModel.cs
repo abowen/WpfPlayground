@@ -115,57 +115,7 @@ namespace WpfPlayground.ViewModels
 
 
     /// <summary>
-    /// CallerMemberName
-    /// - Resharpers C# auto-implemented
-    /// - Pluralsight C# Tips n Tricks
-    /// - Cookbook C# 5.0
-    /// </summary>
-    public class PersonC : INotifyPropertyChanged, IPerson
-    {
-        private int _age;
-
-        public int Age
-        {
-            get { return _age; }
-            set { _age = value; OnPropertyChanged(); }
-        }
-
-        private string _name;
-
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; OnPropertyChanged(); }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-
-        [Conditional("Debug")]
-        [NotifyPropertyChangedInvocator]
-        public virtual void OnPropertyChangedDebug([CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-
-
-    /// <summary>
-    /// Old-method of implementing INotifyPropertyChanged
+    /// String
     /// </summary> 
     public class PersonA : INotifyPropertyChanged, IPerson
     {
@@ -193,14 +143,13 @@ namespace WpfPlayground.ViewModels
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        [Conditional("Debug")]
+        [Conditional("DEBUG")]
         public virtual void OnPropertyChangedDebug(string propertyName)
         {
             var handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-
 
     /// <summary>
     /// Expression
@@ -253,7 +202,7 @@ namespace WpfPlayground.ViewModels
             }
         }
 
-        [Conditional("Debug")]
+        [Conditional("DEBUG")]
         public void NotifyExpressionDebug<T>(Expression<Func<T>> expr)
         {
             var lambda = (LambdaExpression)expr;
@@ -268,6 +217,55 @@ namespace WpfPlayground.ViewModels
                 memberExpr = (MemberExpression)lambda.Body;
             }
             OnPropertyChanged(memberExpr.Member.Name);
+        }
+    }
+
+    /// <summary>
+    /// CallerMemberName
+    /// - Resharpers C# auto-implemented
+    /// - Pluralsight C# Tips n Tricks
+    /// - Cookbook C# 5.0
+    /// </summary>
+    public class PersonC : INotifyPropertyChanged, IPerson
+    {
+        private int _age;
+
+        public int Age
+        {
+            get { return _age; }
+            set { _age = value; OnPropertyChanged(); }
+        }
+
+        private string _name;
+
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; OnPropertyChanged(); }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            var handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+
+        [Conditional("DEBUG")]
+        [NotifyPropertyChangedInvocator]
+        public virtual void OnPropertyChangedDebug([CallerMemberName] string propertyName = null)
+        {
+            var handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }
