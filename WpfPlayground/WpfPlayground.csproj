@@ -64,9 +64,12 @@
     <Compile Include="Common\NotificationEvent.cs" />
     <Compile Include="Common\Person.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="TemplateSelectors\PersonDataTemplateSelector.cs" />
     <Compile Include="ViewModels\AnimationViewModel.cs" />
     <Compile Include="ViewModels\AsyncViewModel.cs" />
+    <Compile Include="ViewModels\NotifyViewModel.cs" />
+    <Compile Include="ViewModels\UniformGridViewModel.cs" />
     <Compile Include="ViewModels\DataTemplateViewModel.cs" />
     <Compile Include="ViewModels\EventAggregatorViewModel.cs" />
     <Compile Include="ViewModels\NotificationViewModel.cs" />
@@ -76,6 +79,12 @@
     </Compile>
     <Compile Include="Views\AsyncView.xaml.cs">
       <DependentUpon>AsyncView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NotifyView.xaml.cs">
+      <DependentUpon>NotifyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UniformGridView.xaml.cs">
+      <DependentUpon>UniformGridView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DataTemplateView.xaml.cs">
       <DependentUpon>DataTemplateView.xaml</DependentUpon>
@@ -147,6 +156,14 @@
     <Page Include="Views\AsyncView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NotifyView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UniformGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\DataTemplateView.xaml">
       <SubType>Designer</SubType>

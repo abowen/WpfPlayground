@@ -44,6 +44,16 @@ namespace WpfPlayground.ViewModels
             ActivateItem(eventAggregatorViewModel);
         }
 
+        public void ShowUniformGridButton()
+        {
+            ActivateItem(new UniformGridViewModel());
+        }
+
+        public void ShowNotifyButton()
+        {
+            ActivateItem(new NotifyViewModel());
+        }
+
         public NotificationViewModel NotificationViewModel { get; private set; }
     }
 }
