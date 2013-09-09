@@ -68,6 +68,7 @@
     <Compile Include="TemplateSelectors\PersonDataTemplateSelector.cs" />
     <Compile Include="ViewModels\AnimationViewModel.cs" />
     <Compile Include="ViewModels\AsyncViewModel.cs" />
+    <Compile Include="ViewModels\ProcessViewModel.cs" />
     <Compile Include="ViewModels\NotifyViewModel.cs" />
     <Compile Include="ViewModels\UniformGridViewModel.cs" />
     <Compile Include="ViewModels\DataTemplateViewModel.cs" />
@@ -79,6 +80,9 @@
     </Compile>
     <Compile Include="Views\AsyncView.xaml.cs">
       <DependentUpon>AsyncView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProcessView.xaml.cs">
+      <DependentUpon>ProcessView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NotifyView.xaml.cs">
       <DependentUpon>NotifyView.xaml</DependentUpon>
@@ -156,6 +160,10 @@
     <Page Include="Views\AsyncView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProcessView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\NotifyView.xaml">
       <Generator>MSBuild:Compile</Generator>

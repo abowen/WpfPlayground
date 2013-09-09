@@ -54,6 +54,11 @@ namespace WpfPlayground.ViewModels
             ActivateItem(new NotifyViewModel());
         }
 
+        public void ShowProcessButton()
+        {
+            ActivateItem(new ProcessViewModel());
+        }
+
         public NotificationViewModel NotificationViewModel { get; private set; }
     }
 }

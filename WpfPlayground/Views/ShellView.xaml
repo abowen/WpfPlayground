@@ -6,6 +6,8 @@
              mc:Ignorable="d"
              MinWidth="640"
              MinHeight="480"
+             MaxWidth="1440"
+             MaxHeight="900"
              d:DesignHeight="300"
              d:DesignWidth="300">
 
@@ -65,6 +67,8 @@
                                HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
+            <Button x:Name="ShowProcessButton"
+                    Content="Processes" />
 
         </StackPanel>
 
