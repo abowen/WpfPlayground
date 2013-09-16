@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="WpfPlayground.Views.DelegateView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModels="clr-namespace:WpfPlayground.ViewModels"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+    <UserControl.Resources>
+        <viewModels:DelegateViewModel x:Key="DesignViewModel" />
+    </UserControl.Resources>
+    <WrapPanel>
+        
+        <StackPanel Style="{StaticResource WrapStackPanel}"
+                    Background="Gold">
+            <TextBlock Text="Delegate"
+                       Style="{StaticResource HeadingStyle}" />
+            <Button x:Name="DelegateButton"
+                    Content="Start Delegate" />
+            <TextBlock x:Name="DelegateNumber"
+                       Style="{StaticResource HeadingStyle}" />
+            
+        </StackPanel>
+        <StackPanel Style="{StaticResource WrapStackPanel}"
+                    Background="Gold">
+            <TextBlock Text="Event"
+                       Style="{StaticResource HeadingStyle}" />
+            <Button x:Name="EventButton"
+                    Content="Start Event" />
+            <TextBlock x:Name="EventNumber"
+                       Style="{StaticResource HeadingStyle}" />
+
+        </StackPanel>
+
+        <StackPanel Style="{StaticResource WrapStackPanel}"
+                    Background="Gold">
+            <TextBlock Text="Event Generic"
+                       Style="{StaticResource HeadingStyle}" />
+            <Button x:Name="EventGenericButton"
+                    Content="Start Event Generic" />
+            <TextBlock x:Name="EventGenericNumber"
+                       Style="{StaticResource HeadingStyle}" />
+
+        </StackPanel>
+
+        <StackPanel Style="{StaticResource WrapStackPanel}"
+                    Background="Gold">
+            <TextBlock Text="Delegate Anonymous"
+                       Style="{StaticResource HeadingStyle}" />
+            <Button x:Name="DelegateAnonymousButton"
+                    Content="Start Delegate Anonymous" />
+            <TextBlock x:Name="DelegateAnonymousNumber"
+                       Style="{StaticResource HeadingStyle}" />
+        </StackPanel>
+
+        <StackPanel Style="{StaticResource WrapStackPanel}"
+                    Background="Gold">
+            <TextBlock Text="Delegate Lambda"
+                       Style="{StaticResource HeadingStyle}" />
+            <Button x:Name="DelegateLambdaButton"
+                    Content="Start Lambda Anonymous" />
+            <TextBlock x:Name="DelegateLambdaNumber"
+                       Style="{StaticResource HeadingStyle}" />
+        </StackPanel>
+
+        <StackPanel Style="{StaticResource WrapStackPanel}"
+                    Background="Gold">
+            <TextBlock Text="Action"
+                       Style="{StaticResource HeadingStyle}" />
+            <Button x:Name="MyActionButton"
+                    Content="Start Action" />
+            <TextBlock x:Name="ActionNumber"
+                       Style="{StaticResource HeadingStyle}" />
+        </StackPanel>
+
+        <StackPanel Style="{StaticResource WrapStackPanel}"
+                    Background="Gold">
+            <TextBlock Text="Function"
+                       Style="{StaticResource HeadingStyle}" />
+            <Button x:Name="FunctionButton"
+                    Content="Start Function" />
+            <TextBlock x:Name="FunctionNumber"
+                       Style="{StaticResource HeadingStyle}" />
+        </StackPanel>
+
+    </WrapPanel>
+</UserControl>
