@@ -85,5 +85,43 @@
                        Margin="0,0,5,5"
                        HorizontalAlignment="Right" />
         </StackPanel>
+
+        <StackPanel Background="PaleGoldenrod">
+            <StackPanel.Style>
+                <Style TargetType="{x:Type StackPanel}"
+                       BasedOn="{StaticResource WrapStackPanel}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsBusy}"
+                                     Value="True">
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                         From="0.2"
+                                                         To="1.0"
+                                                         Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                         From="1.0"
+                                                         To="0.2"
+                                                         Duration="0:0:0.5" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Style>
+            <TextBlock Style="{StaticResource HeadingStyle}"
+                       Text="Fade In" />
+            <TextBlock Style="{StaticResource HeadingStyle}"
+                       Text="On Property" />
+            <Button x:Name="FadeButton" Content="Fade" />
+        </StackPanel>
     </WrapPanel>
 </UserControl>
