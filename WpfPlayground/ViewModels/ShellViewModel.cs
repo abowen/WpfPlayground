@@ -64,6 +64,11 @@ namespace WpfPlayground.ViewModels
             ActivateItem(new DelegateViewModel());
         }
 
+        public void ShowValidationButton()
+        {
+            ActivateItem(new ValidationViewModel());
+        }
+
         public NotificationViewModel NotificationViewModel { get; private set; }
     }
 }

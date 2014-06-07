@@ -50,7 +50,7 @@ namespace WpfPlayground.ViewModels
                 person.OnPropertyChangedDebug("TestProperty");
             }
             stopWatch.Stop();
-            ElapsedTime = stopWatch.ElapsedTicks;
+            ElapsedTime = stopWatch.ElapsedMilliseconds;
         }
 
         public void PersonBButton()
@@ -64,7 +64,7 @@ namespace WpfPlayground.ViewModels
                 person.NotifyExpressionDebug(() => TestProperty);
             }
             stopWatch.Stop();
-            ElapsedTime = stopWatch.ElapsedTicks;
+            ElapsedTime = stopWatch.ElapsedMilliseconds;
         }
 
         public void PersonCButton()
@@ -78,16 +78,20 @@ namespace WpfPlayground.ViewModels
                 person.OnPropertyChangedDebug();
             }
             stopWatch.Stop();
-            ElapsedTime = stopWatch.ElapsedTicks;
+            ElapsedTime = stopWatch.ElapsedMilliseconds;
         }
 
         public void IncrementButton()
         {
+            var stopWatch = new Stopwatch();
+            stopWatch.Start();
             foreach (var person in People)
             {
                 person.Age++;
                 person.Name += "+";
             }
+            stopWatch.Stop();
+            ElapsedTime = stopWatch.ElapsedMilliseconds;            
         }
     }
 

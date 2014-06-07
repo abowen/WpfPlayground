@@ -71,6 +71,8 @@
             </Button>
             <Button x:Name="ShowProcessButton"
                     Content="Processes" />
+            <Button x:Name="ShowValidationButton"
+                    Content="Validation" />
 
         </StackPanel>
 
