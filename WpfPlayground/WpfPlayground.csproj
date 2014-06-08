@@ -70,6 +70,7 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="TemplateSelectors\PersonDataTemplateSelector.cs" />
     <Compile Include="ViewModels\AnimationViewModel.cs" />
+    <Compile Include="ViewModels\TabViewModel.cs" />
     <Compile Include="ViewModels\AsyncViewModel.cs" />
     <Compile Include="ViewModels\ValidationViewModel.cs" />
     <Compile Include="ViewModels\DelegateViewModel.cs" />
@@ -85,6 +86,9 @@
     </Compile>
     <Compile Include="Views\AsyncView.xaml.cs">
       <DependentUpon>AsyncView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabView.xaml.cs">
+      <DependentUpon>TabView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ValidationView.xaml.cs">
       <DependentUpon>ValidationView.xaml</DependentUpon>
@@ -169,6 +173,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AsyncView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TabView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using Caliburn.Micro;
-using WpfPlayground.Annotations;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
+using WpfPlayground.Annotations;
 
 namespace WpfPlayground.ViewModels
 {
@@ -15,9 +15,8 @@ namespace WpfPlayground.ViewModels
         public NotifyViewModel()
         {
             People = new ObservableCollection<IPerson>();
+            Amount = 1000;
         }
-
-        private readonly int _listCount = 1000;
 
         private ObservableCollection<IPerson> _people;
         public ObservableCollection<IPerson> People
@@ -26,72 +25,108 @@ namespace WpfPlayground.ViewModels
             set { _people = value; NotifyOfPropertyChange(() => People); }
         }
 
-        private long _elapsedTime;
-        public long ElapsedTime
+        private int _amount;
+        public int Amount
         {
-            get { return _elapsedTime; }
+            get { return _amount; }
             set
             {
-                _elapsedTime = value;
-                NotifyOfPropertyChange(() => ElapsedTime);
+                _amount = value;
+                NotifyOfPropertyChange(() => Amount);
             }
+        }
+
+        private long _createTiming;
+        public long CreateTiming
+        {
+            get { return _createTiming; }
+            set { _createTiming = value; NotifyOfPropertyChange(() => CreateTiming); }
+        }
+
+        private long _updateTiming;
+        public long UpdateTiming
+        {
+            get { return _updateTiming; }
+            set { _updateTiming = value; NotifyOfPropertyChange(() => UpdateTiming); }
+        }
+
+        private long _dateTiming;
+        public long DateTiming
+        {
+            get { return _dateTiming; }
+            set { _dateTiming = value; NotifyOfPropertyChange(() => DateTiming); }
         }
 
         public int TestProperty;
 
         public void PersonAButton()
         {
-            People = new ObservableCollection<IPerson>(PersonFactory<PersonA>.CreateList(_listCount));
-
-            var stopWatch = new Stopwatch();
-            stopWatch.Start();
-            foreach (PersonA person in People)
+            using (new MyTimerDateTime(ms => DateTiming = ms))
             {
-                person.OnPropertyChangedDebug("TestProperty");
+                using (new MyTimer(ms => CreateTiming = ms))
+                {
+                    People = new ObservableCollection<IPerson>(PersonFactory<PersonA>.CreateList(Amount));
+                }
+
+                using (new MyTimer(ms => UpdateTiming = ms))
+                {
+                    foreach (PersonA person in People)
+                    {
+                        person.OnPropertyChangedDebug("TestProperty");
+                    }
+                }
             }
-            stopWatch.Stop();
-            ElapsedTime = stopWatch.ElapsedMilliseconds;
         }
 
         public void PersonBButton()
         {
-            People = new ObservableCollection<IPerson>(PersonFactory<PersonB>.CreateList(_listCount));
-
-            var stopWatch = new Stopwatch();
-            stopWatch.Start();
-            foreach (PersonB person in People)
+            using (new MyTimerDateTime(ms => DateTiming = ms))
             {
-                person.NotifyExpressionDebug(() => TestProperty);
+                using (new MyTimer(ms => CreateTiming = ms))
+                {
+                    People = new ObservableCollection<IPerson>(PersonFactory<PersonB>.CreateList(Amount));
+                }
+                using (new MyTimer(ms => UpdateTiming = ms))
+                {
+                    foreach (PersonB person in People)
+                    {
+                        person.NotifyExpressionDebug(() => TestProperty);
+                    }
+                }
             }
-            stopWatch.Stop();
-            ElapsedTime = stopWatch.ElapsedMilliseconds;
         }
 
         public void PersonCButton()
         {
-            People = new ObservableCollection<IPerson>(PersonFactory<PersonC>.CreateList(_listCount));
-
-            var stopWatch = new Stopwatch();
-            stopWatch.Start();
-            foreach (PersonC person in People)
+            using (new MyTimerDateTime(ms => DateTiming = ms))
             {
-                person.OnPropertyChangedDebug();
+                using (new MyTimer(ms => CreateTiming = ms))
+                {
+                    People = new ObservableCollection<IPerson>(PersonFactory<PersonC>.CreateList(Amount));
+                }
+                using (new MyTimer(ms => UpdateTiming = ms))
+                {
+                    foreach (PersonC person in People)
+                    {
+                        person.OnPropertyChangedDebug();
+                    }
+                }
             }
-            stopWatch.Stop();
-            ElapsedTime = stopWatch.ElapsedMilliseconds;
         }
 
-        public void IncrementButton()
+        public void UpdateButton()
         {
-            var stopWatch = new Stopwatch();
-            stopWatch.Start();
-            foreach (var person in People)
+            using (new MyTimerDateTime(ms => DateTiming = ms))
             {
-                person.Age++;
-                person.Name += "+";
+                using (new MyTimer(ms => UpdateTiming = ms))
+                {
+                    foreach (var person in People)
+                    {
+                        person.Age++;
+                        person.Name += "+";
+                    }
+                }
             }
-            stopWatch.Stop();
-            ElapsedTime = stopWatch.ElapsedMilliseconds;            
         }
     }
 
@@ -124,7 +159,6 @@ namespace WpfPlayground.ViewModels
     public class PersonA : INotifyPropertyChanged, IPerson
     {
         private int _age;
-
         public int Age
         {
             get { return _age; }
@@ -132,7 +166,6 @@ namespace WpfPlayground.ViewModels
         }
 
         private string _name;
-
         public string Name
         {
             get { return _name; }
@@ -163,7 +196,6 @@ namespace WpfPlayground.ViewModels
     public class PersonB : INotifyPropertyChanged, IPerson
     {
         private int _age;
-
         public int Age
         {
             get { return _age; }
@@ -270,6 +302,50 @@ namespace WpfPlayground.ViewModels
             {
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+    }
+
+    public class MyTimer : IDisposable
+    {
+        private readonly Action<long> _updateItem;
+        //private readonly TextBlock _textBlock;
+        private Stopwatch _stopwatch;
+
+        public MyTimer(Action<long> updateItem)
+        {
+            _updateItem = updateItem;
+            //_textBlock = textBlock;
+            _stopwatch = Stopwatch.StartNew();
+        }
+
+        public void Dispose()
+        {
+            if (_stopwatch == null) return;
+
+            _stopwatch.Stop();
+            _updateItem(_stopwatch.ElapsedMilliseconds);
+            //_textBlock.Text = string.Format("{0}ms", _stopwatch.ElapsedMilliseconds);
+            _stopwatch = null;
+        }
+    }
+
+    public class MyTimerDateTime : IDisposable
+    {
+        private readonly Action<long> _updateItem;
+        //private readonly TextBlock _textBlock;
+        private DateTime _startDateTime;
+
+        public MyTimerDateTime(Action<long> updateItem)
+        {
+            _updateItem = updateItem;
+            //_textBlock = textBlock;
+            _startDateTime = DateTime.UtcNow;
+        }
+
+        public void Dispose()
+        {
+            var elapsedMilliseconds = Convert.ToInt64((DateTime.UtcNow - _startDateTime).TotalMilliseconds);
+            _updateItem(elapsedMilliseconds);
         }
     }
 }

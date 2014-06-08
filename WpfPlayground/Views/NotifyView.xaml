@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              d:DesignHeight="600"
-             d:DesignWidth="600">    
+             d:DesignWidth="600">
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Width" Value="100"></Setter>
@@ -14,15 +14,24 @@
             <Setter Property="Margin" Value="5"></Setter>
         </Style>
     </UserControl.Resources>
-    <StackPanel Orientation="Vertical">        
+    <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal">
 
             <Button x:Name="PersonAButton">String</Button>
             <Button x:Name="PersonBButton">Expression</Button>
             <Button x:Name="PersonCButton">CallerMember</Button>
-            <Button x:Name="IncrementButton">Increment</Button>            
-        </StackPanel>        
-        <TextBlock Text="{Binding ElapsedTime, StringFormat='Time: {0,6}ms'}" />
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Text="{Binding Amount, Mode=TwoWay}" 
+                     Width="100" Height="30" 
+                     FontSize="16" TextAlignment="Right"></TextBox>
+            <Button x:Name="UpdateButton" 
+                    Height="30">Update</Button>
+        </StackPanel>
+        <TextBlock Text="{Binding CreateTiming, StringFormat='Create: {0,6}ms'}" FontSize="14"/>
+        <TextBlock Text="{Binding UpdateTiming, StringFormat='Update: {0,6}ms'}" FontSize="14"/>
+        <TextBlock Text="{Binding DateTiming, StringFormat='Total: {0,6}ms'}" FontSize="14"/>
         <ListBox ItemsSource="{Binding People}">
             <ListBox.ItemTemplate>
                 <DataTemplate>

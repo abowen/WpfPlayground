@@ -69,6 +69,12 @@ namespace WpfPlayground.ViewModels
             ActivateItem(new ValidationViewModel());
         }
 
+        public void ShowTabButton()
+        {
+            ActivateItem(new TabViewModel());
+        }
+
+
         public NotificationViewModel NotificationViewModel { get; private set; }
     }
 }
